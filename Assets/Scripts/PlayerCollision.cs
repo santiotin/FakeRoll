@@ -7,13 +7,13 @@ public class PlayerCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision  collisionInfo)
     {
-        if (collisionInfo.collider.tag == "Obstacle") {//tag obstacle per qualsevol obj. amb aquest tag
+        if (collisionInfo.collider.name == "block_tile") {//tag obstacle per qualsevol obj. amb aquest tag
             //you die
             movement.enabled = false;
         }
-       /* if (collisionInfo.collider.tag == "Obstacle") {
-            collisionInfo.gameObject.GetComponent<Rigidbody>().AddForce(0, 200, 0);
-        }*/
+        if (collisionInfo.collider.name == "jump_tile") {
+            rb.AddForce(0, 140, 0);
+        }
     }
    
 }
