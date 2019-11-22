@@ -112,6 +112,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &10732976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1802758574}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 10732977}
+  m_Layer: 0
+  m_Name: block_tile (Missing Prefab)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &10732977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1802758574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10732976}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 116051025}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &111528959
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +155,6 @@ GameObject:
   - component: {fileID: 111528961}
   - component: {fileID: 111528960}
   - component: {fileID: 111528963}
-  - component: {fileID: 111528964}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -210,29 +240,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 301034524}
   offset: {x: 0, y: 1.5, z: -6}
---- !u!114 &111528964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111528959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71a4fd283c095214bba7fa6c913471d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileGround: {fileID: 0}
-  tileBlock: {fileID: 0}
-  tileJump: {fileID: 0}
-  textMap: {fileID: 4900000, guid: 936efb5b038410a4694556e344cf8d8b, type: 3}
-  allTiles: []
---- !u!1 &116051024 stripped
+--- !u!1 &116051024
 GameObject:
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 100002, guid: 78d5541c56a81d148b642e4d06bc3d2b,
     type: 3}
   m_PrefabInstance: {fileID: 1802758574}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 116051025}
+  - component: {fileID: 116051028}
+  m_Layer: 0
+  m_Name: Missing Prefab (Dummy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &116051025
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 1802758574}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116051024}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 10732977}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &116051028
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -453,7 +492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 8c2624cbfb903c848925dabb7e637bfc, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 8c2624cbfb903c848925dabb7e637bfc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -634,6 +673,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 100002, guid: 78d5541c56a81d148b642e4d06bc3d2b, type: 3}
+      propertyPath: m_Name
+      value: block_tile
+      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 78d5541c56a81d148b642e4d06bc3d2b, type: 3}
       propertyPath: m_Name
       value: Block
@@ -641,10 +684,6 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 78d5541c56a81d148b642e4d06bc3d2b, type: 3}
       propertyPath: m_TagString
       value: Obstacle
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 78d5541c56a81d148b642e4d06bc3d2b, type: 3}
-      propertyPath: m_Name
-      value: block_tile
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 78d5541c56a81d148b642e4d06bc3d2b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -759,5 +798,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
