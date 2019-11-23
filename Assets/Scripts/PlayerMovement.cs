@@ -4,8 +4,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody rb;
 
-    public float forwardForce = 2000f;
-    public float sidewaysForce = 1000f;
+    public float forwardForce = 400f;
+    public float sidewaysForce = 30f;
 
 
 
@@ -22,11 +22,11 @@ public class PlayerMovement : MonoBehaviour
 
         if ( Input.GetKey("d") )
         {
-            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0);
+            rb.AddForce(sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
         if (Input.GetKey("a") )
         {
-            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0);
+            rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
         }
     }
 }
