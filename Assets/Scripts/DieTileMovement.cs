@@ -16,7 +16,7 @@ public class DieTileMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Distance() < 25) rb.useGravity = true;
+        if (Distance() < 20) rb.useGravity = true;
     }
 
     private float Distance()

@@ -31,7 +31,6 @@ public class MapLvl1Script : MonoBehaviour
         int.TryParse(type, out tileNum);
 
         Transform tile = Instantiate(allTiles[tileNum], new Vector3(x*offset,-3.0f,y*offset), Quaternion.identity) as Transform;
-        if (tileNum == 3) tile.tag = "Die";
         //GameObject newTile = Instantiate(tilePrefabs[tileNum]);
 
         //newTile.Transform.position = new Vector3(worldStart.x + (Tile));
