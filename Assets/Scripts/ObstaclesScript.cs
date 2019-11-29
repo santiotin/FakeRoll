@@ -5,10 +5,9 @@ using System;
 using System.Text.RegularExpressions;
 
 
-public class MapLvl1Script : MonoBehaviour
+public class ObstaclesScript : MonoBehaviour
 {
-    public Transform tileGround;
-    public Transform tileJump;
+    public Transform tileBlock;
     public Transform tileEmpty;
     public TextAsset textMap;
     public List<Transform> allTiles = new List<Transform>();
@@ -26,10 +25,11 @@ public class MapLvl1Script : MonoBehaviour
 
     void initTile(string type, int x, int y) {
         float offset = 1.5f;
+        float desplX = 0.20f;
         int tileNum = 0;
         int.TryParse(type, out tileNum);
 
-        Transform tile = Instantiate(allTiles[tileNum], new Vector3(x*offset,-3.0f,y*offset), Quaternion.identity) as Transform;
+        Transform tile = Instantiate(allTiles[tileNum], new Vector3((x*offset) - desplX,-2.6f, (y*offset) - desplX), Quaternion.identity) as Transform;
 
         //GameObject newTile = Instantiate(tilePrefabs[tileNum]);
 
@@ -53,9 +53,9 @@ public class MapLvl1Script : MonoBehaviour
     }
 
     private void initListOfTiles() {
-        allTiles.Add(tileGround);
-        allTiles.Add(tileJump);
         allTiles.Add(tileEmpty);
+        allTiles.Add(tileBlock);
     }
 
 }
+

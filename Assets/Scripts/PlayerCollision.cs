@@ -2,8 +2,10 @@
 
 public class PlayerCollision : MonoBehaviour
 {
-  public PlayerMovement movement;
+    public PlayerMovement movement;
     public Rigidbody rb;
+
+    public int jumpForce = 500;
 
     void OnCollisionEnter(Collision  collisionInfo)
     {
@@ -14,13 +16,14 @@ public class PlayerCollision : MonoBehaviour
         if (collisionInfo.collider.name == "jump_tile") {
             Debug.Log("JUMP");
             rb.constraints = RigidbodyConstraints.None;
-            rb.AddForce(0, 140, 0);
+            rb.AddForce(0, jumpForce, 0);
         }
-       if (collisionInfo.collider.name == "ground_tile")
+        if (collisionInfo.collider.name == "ground_tile")
         {
             Debug.Log("down");
             rb.constraints &= RigidbodyConstraints.FreezePositionY;
-            rb.AddForce(0, 0, 0);
+            
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
         }
     }
    
