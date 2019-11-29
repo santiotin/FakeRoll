@@ -4,7 +4,7 @@
 o 
 
 # material
-mtllib jump.mtl
+mtllib JumpTile.mtl
 usemtl palette
 
 # normals
@@ -16,7 +16,7 @@ vn 0 -1 0
 vn 0 1 0
 
 # texcoords
-vt 0.826172 0.5
+vt 0.705078 0.5
 vt 0.939453 0.5
 
 # verts
