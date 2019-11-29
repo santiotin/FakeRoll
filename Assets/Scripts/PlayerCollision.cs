@@ -2,10 +2,16 @@
 
 public class PlayerCollision : MonoBehaviour
 {
-    public PlayerMovement movement;
+  public PlayerMovement movement;
     public Rigidbody rb;
 
-    public int jumpForce = 500;
+    bool jumping = false;
+
+    Vector3 speedUp = new Vector3(0f,200f,0f);
+
+    void Update() {
+        if(transform.position.y > 5) jumping = false;
+    }
 
     void OnCollisionEnter(Collision  collisionInfo)
     {
@@ -13,17 +19,22 @@ public class PlayerCollision : MonoBehaviour
             //you die
             movement.enabled = false;
         }
-        if (collisionInfo.collider.name == "jump_tile") {
-            Debug.Log("JUMP");
-            rb.constraints = RigidbodyConstraints.None;
-            rb.AddForce(0, jumpForce, 0);
+        if (collisionInfo.collider.name == "jump_tile" && !jumping) {
+            //rb.constraints = RigidbodyConstraints.None;
+            rb.AddForce(0, 1200, 0);
+            jumping = true;
+            //gameObject.collider.enabled = true;
+            //transform.Translate(speedUp * Time.deltaTime);
         }
-        if (collisionInfo.collider.name == "ground_tile")
+       if (collisionInfo.collider.name == "ground_tile")
         {
-            Debug.Log("down");
-            rb.constraints &= RigidbodyConstraints.FreezePositionY;
-            
-            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            //rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            jumping = false;
+        }
+        if (collisionInfo.collider.name == "empty_tile")
+        {
+            //rb.AddForce(0,-1000,0);
+            jumping = false;
         }
     }
    
