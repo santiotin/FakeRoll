@@ -7,15 +7,6 @@ public class PlayerMovement : MonoBehaviour
     public float forwardForce = 400f;
     public float sidewaysForce = 30f;
 
-
-
-    // Start is called before the first frame update
-   /* void Start()
-    {
-        rb.AddForce(0, 200, 10);
-    }*/
-
-    // Update is called once per frame
     void Update()
     {
         rb.AddForce(0, 0, forwardForce * Time.deltaTime);
