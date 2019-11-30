@@ -33,7 +33,13 @@ public class PlayerCollision : MonoBehaviour
         }
         if (collisionInfo.collider.name == "empty_tile")
         {
-            //rb.AddForce(0,-1000,0);
+           // rb.AddForce(0,-1000,0);
+            jumping = false;
+        }
+        if (collisionInfo.collider.name == "fast_tile")
+        {
+           
+            rb.AddForce(0,0,2000);
             jumping = false;
         }
     }

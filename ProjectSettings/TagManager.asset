@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - Die
   - Empty
+  - Fast
   layers:
   - Default
   - TransparentFX
