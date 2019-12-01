@@ -56,6 +56,8 @@ public class PlayerCollision : MonoBehaviour
         {
             // rb.AddForce(0,-1000,0);
             Debug.Log("Colision CHAMPI");
+        }
+
     }
 
     void OnTriggerEnter(Collider collider) {
