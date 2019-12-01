@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//this is integrations
 public class PlayerDestroy : MonoBehaviour
 {
     public float cubeSize = 0.2f;
