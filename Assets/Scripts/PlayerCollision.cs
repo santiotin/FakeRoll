@@ -15,7 +15,7 @@ public class PlayerCollision : MonoBehaviour
         time = 1000;
     }
     void Update() {
-        if(transform.position.y > 5) jumping = false;
+        if(transform.position.y > 2) jumping = false;
         Debug.Log(Time.time);
         if ((Time.time - time) > 3)
         {
@@ -23,6 +23,7 @@ public class PlayerCollision : MonoBehaviour
             big = false;
             transform.localScale -= new Vector3(1, 1, 1);
         }
+
     }
 
     void OnCollisionEnter(Collision  collisionInfo)
@@ -34,7 +35,7 @@ public class PlayerCollision : MonoBehaviour
         }
         if (collisionInfo.collider.name == "jump_tile" && !jumping) {
             //rb.constraints = RigidbodyConstraints.None;
-            rb.AddForce(0, 1200, 0);
+            rb.AddForce(0, 1300, 0);
             jumping = true;
             //gameObject.collider.enabled = true;
             //transform.Translate(speedUp * Time.deltaTime);
@@ -44,11 +45,7 @@ public class PlayerCollision : MonoBehaviour
             //rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             jumping = false;
         }
-        if (collisionInfo.collider.name == "empty_tile")
-        {
-           // rb.AddForce(0,-1000,0);
-            jumping = false;
-        }
+
         if (collisionInfo.collider.name == "fast_tile")
         {
            
@@ -59,6 +56,17 @@ public class PlayerCollision : MonoBehaviour
         {
             // rb.AddForce(0,-1000,0);
             Debug.Log("Colision CHAMPI");
+    }
+
+    void OnTriggerEnter(Collider collider) {
+        if(collider.name == "empty_tile") {
+            Debug.Log("emptyyyy");
+            rb.AddForce(0,-1000,0);
+            jumping = false;
+        }
+        if(collider.name == "die_tile") {
+            Debug.Log("diee");
+            rb.AddForce(0,-1000,0);
             jumping = false;
             if (!big) big = true;
             else big = false;
