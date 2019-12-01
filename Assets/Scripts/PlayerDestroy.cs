@@ -29,14 +29,15 @@ public class PlayerDestroy : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if(transform.position.y < -1) explode();
+        if(transform.position.y < -0.5) explode();
 
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.name == "block_tile") {
+        if (other.gameObject.name == "block_tile" ) {
             explode();
         }
+        
 
     }
 
@@ -73,6 +74,7 @@ public class PlayerDestroy : MonoBehaviour
 
         //create piece
         GameObject piece;
+
         piece = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 
         piece.GetComponent<Renderer>().material = material;
@@ -81,6 +83,7 @@ public class PlayerDestroy : MonoBehaviour
         //set piece position and scale
         piece.transform.position = transform.position + new Vector3(cubeSize * x, cubeSize * y, cubeSize * z) - cubesPivot;
         piece.transform.localScale = new Vector3(cubeSize, cubeSize, cubeSize);
+
 
         //add rigidbody and set mass
         piece.AddComponent<Rigidbody>();
