@@ -9,6 +9,9 @@ public class ObstaclesScript : MonoBehaviour
 {
     public Transform tileBlock;
     public Transform tileEmpty;
+    public Transform tileCoin;
+    public Transform tileCylinder;
+    public Transform tileChampi;
     public TextAsset textMap;
     public List<Transform> allTiles = new List<Transform>();
 
@@ -55,6 +58,9 @@ public class ObstaclesScript : MonoBehaviour
     private void initListOfTiles() {
         allTiles.Add(tileEmpty);
         allTiles.Add(tileBlock);
+        allTiles.Add(tileCoin);
+        allTiles.Add(tileCylinder);
+        allTiles.Add(tileChampi);
     }
 
 }
