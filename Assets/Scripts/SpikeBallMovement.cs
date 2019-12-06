@@ -11,8 +11,9 @@ public class SpikeBallMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //transform.localScale += new Vector3(0.8, 0.8, 0.8);
-        transform.position += new Vector3(transform.position.x-3.3f, transform.position.y + 8, transform.position.z);
+        transform.Rotate(0, 0, 0);
+        transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+        transform.position += new Vector3(transform.position.x - 6.4f, transform.position.y + 5.7f, transform.position.z - 0.4f); //11.6 -5.2 17.6
         if (transform.position.x < 2.25) moveRight = true;
         else moveRight = false;
     }

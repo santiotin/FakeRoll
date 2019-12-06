@@ -13,7 +13,7 @@ public class starMovement : MonoBehaviour
     void Start()
     {
         transform.Rotate(-90, 0, 0);
-        transform.position += new Vector3(transform.position.x-3.5f, 4, transform.position.z);
+        transform.position += new Vector3(transform.position.x-3.4f, transform.position.y+5.56f, transform.position.z-0.4f);// 8.6 -5.06 8.6
     }
     void Update()
     {
@@ -21,7 +21,6 @@ public class starMovement : MonoBehaviour
         if (Time.time - time > 0.05f)
         {
             test = Time.time - time;
-            Debug.Log("Time : " + Time.time);
             //Debug.Log("La posició de la estrella és : " + transform.position.y);
             if (transform.position.y < 0.7 && up) transform.Translate(0, 0, move);
             else if (transform.position.y >= 0.7) up = false;
