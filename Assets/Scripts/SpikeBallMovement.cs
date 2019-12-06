@@ -12,6 +12,7 @@ public class SpikeBallMovement : MonoBehaviour
     void Start()
     {
         //transform.localScale += new Vector3(0.8, 0.8, 0.8);
+        transform.position += new Vector3(transform.position.x-3.3f, transform.position.y + 8, transform.position.z);
         if (transform.position.x < 2.25) moveRight = true;
         else moveRight = false;
     }
@@ -23,12 +24,12 @@ public class SpikeBallMovement : MonoBehaviour
         {
             rotate += 5;
             transform.Translate(speedRight * Time.deltaTime, Space.World);
-            transform.Rotate(0, rotate, 0);
+            transform.Rotate(0, 0, rotate);
         }
         else
         {
             rotate -= 5;
-            transform.Rotate(0, rotate, 0);
+            transform.Rotate(0, 0, rotate);
             moveRight = false;
             transform.Translate(speedLeft * Time.deltaTime, Space.World);
         }
@@ -36,12 +37,12 @@ public class SpikeBallMovement : MonoBehaviour
         {
             rotate -= 5;
             transform.Translate(speedLeft * Time.deltaTime, Space.World);
-            transform.Rotate(0, rotate, 0);
+            transform.Rotate(0, 0, rotate);
         }
         else
         {
             rotate += 5;
-            transform.Rotate(0, rotate, 0);
+            transform.Rotate(0, 0, rotate);
             moveRight = true;
             transform.Translate(speedRight * Time.deltaTime, Space.World);
         }

@@ -13,6 +13,8 @@ public class ObstaclesScript : MonoBehaviour
     public Transform tileCylinder;
     public Transform tileChampi;
     public Transform tileSpikeBall;
+    public Transform tileStar;
+    public Transform tileSpikes;
     public TextAsset textMap;
     public List<Transform> allTiles = new List<Transform>();
 
@@ -63,6 +65,8 @@ public class ObstaclesScript : MonoBehaviour
         allTiles.Add(tileCylinder);
         allTiles.Add(tileChampi);
         allTiles.Add(tileSpikeBall);
+        allTiles.Add(tileStar);
+        allTiles.Add(tileSpikes);
     }
 
 }
