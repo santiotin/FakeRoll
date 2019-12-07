@@ -4,13 +4,11 @@ public class CylinderMovement : MonoBehaviour
 {
     public Rigidbody rb;
     private Transform player;
-    public float backwardForce = -350f;
+    public float backwardForce;
 
     // Update is called once per frame
     void Start()
     {
-        transform.position += new Vector3(transform.position.x, 8, transform.position.z); //altura 8 del suelo
-        transform.Rotate(0, 0, 90);
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
     void Update()
@@ -21,7 +19,7 @@ public class CylinderMovement : MonoBehaviour
             rb.AddForce(0, 0, backwardForce * Time.deltaTime);
         }
 
-        }
+    }
     private float Distance()
     {
         return Vector3.Distance(transform.position, player.position);

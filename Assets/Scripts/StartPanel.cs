@@ -14,6 +14,6 @@ public class StartPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.position.z >= 20) gameObject.SetActive(false);
+        if(player.position.z >= 42) gameObject.SetActive(false);
     }
 }
