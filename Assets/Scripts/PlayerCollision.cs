@@ -10,6 +10,8 @@ public class PlayerCollision : MonoBehaviour
     bool big = false;
     float time;
     Vector3 speedUp = new Vector3(0f,200f,0f);
+
+    public AudioSource jumpAudio;
     void Start()
     {
         m_Material = GetComponent<Renderer>().material;
@@ -17,7 +19,7 @@ public class PlayerCollision : MonoBehaviour
         time = 1000;
     }
     void Update() {
-        if(transform.position.y > 2) jumping = false;
+        if(transform.position.y > 1) jumping = false;
         if ((Time.time - time) > 3)
         {
             time = 1000;
@@ -35,8 +37,9 @@ public class PlayerCollision : MonoBehaviour
         }
         if (collisionInfo.collider.name == "jump_tile" && !jumping) {
             //rb.constraints = RigidbodyConstraints.None;
-            rb.AddForce(0, 1300, 0);
+            rb.AddForce(0, 900, 0);
             jumping = true;
+            jumpAudio.Play();
             //gameObject.collider.enabled = true;
             //transform.Translate(speedUp * Time.deltaTime);
         }

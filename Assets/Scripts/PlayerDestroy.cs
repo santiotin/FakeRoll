@@ -17,6 +17,9 @@ public class PlayerDestroy : MonoBehaviour
 
     public Material material;
 
+    public Transform deathManager;
+    AudioSource exploteAudio;
+
     // Use this for initialization
     void Start() {
 
@@ -25,6 +28,8 @@ public class PlayerDestroy : MonoBehaviour
         cubesPivotDistance = cubeSize * cubesInRow / 3;
         //use this value to create pivot vector)
         cubesPivot = new Vector3(cubesPivotDistance, cubesPivotDistance, cubesPivotDistance);
+
+        exploteAudio = deathManager.GetComponent<AudioSource>();
 
     }
 
@@ -35,16 +40,21 @@ public class PlayerDestroy : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.name == "block_tile" ) {
+        if (other.gameObject.name == "block_tile") {
             explode();
         }
-        
 
+    }
+
+    void OnCollisionEnter(Collision  collisionInfo) {
+        if(collisionInfo.gameObject.name == "CylinderTile") explode();
     }
 
     public void explode() {
         //make object disappear
+        exploteAudio.Play();
         gameObject.SetActive(false);
+        
 
         //loop 3 times to create 5x5x5 pieces in x,y,z coordinates
         for (int x = 0; x < cubesInRow; x++) {
@@ -68,6 +78,8 @@ public class PlayerDestroy : MonoBehaviour
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, explosionUpward);
             }
         }
+
+        deathManager.GetComponent<DeathManager>().manageDeath();
 
     }
 
