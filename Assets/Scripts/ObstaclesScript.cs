@@ -12,6 +12,7 @@ public class ObstaclesScript : MonoBehaviour
     public Transform tileCoin;
     public Transform tileCylinder;
     public Transform tileChampi;
+    public Transform tileSpikeBall;
     public TextAsset textMap;
     public List<Transform> allTiles = new List<Transform>();
 
@@ -32,7 +33,24 @@ public class ObstaclesScript : MonoBehaviour
         int tileNum = 0;
         int.TryParse(type, out tileNum);
 
-        Transform tile = Instantiate(allTiles[tileNum], new Vector3((x*offset) - desplX,-2.6f, (y*offset) - desplX), Quaternion.identity) as Transform;
+        // empty or block
+        if( tileNum == 0 ||  tileNum == 1) {
+             Transform tile = Instantiate(allTiles[tileNum], new Vector3((x*offset) - desplX,-2.6f, (y*offset)), Quaternion.identity) as Transform;
+        }
+        //spike
+        else if (tileNum == 5){
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x, 1 , y), Quaternion.identity) as Transform;
+        }
+         else if (tileNum == 4){
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x * 1.3f, -2f , y), Quaternion.identity) as Transform;
+        }
+        else if (tileNum == 3){
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x - 0.85f, 1 , y), Quaternion.identity) as Transform;
+        }
+        else {
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x+0.25f, 1 , y), Quaternion.identity) as Transform;
+        }
+       
 
         //GameObject newTile = Instantiate(tilePrefabs[tileNum]);
 
@@ -61,6 +79,7 @@ public class ObstaclesScript : MonoBehaviour
         allTiles.Add(tileCoin);
         allTiles.Add(tileCylinder);
         allTiles.Add(tileChampi);
+        allTiles.Add(tileSpikeBall);
     }
 
 }
