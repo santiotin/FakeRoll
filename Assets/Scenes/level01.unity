@@ -258,7 +258,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 35a21afcacb22d948a4033df035184a0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -555,7 +555,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 66b2944cbd5190d4aab8e9587528d7f4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.6
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -651,7 +651,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fefef5ac083415e45b1de25340d8484f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1886,6 +1886,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec100a244a39a69469a0484723008ac3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1342345542 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 9d0e73dbf5dfc6e4e800cbe52651ac4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 492375694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1356782099
 GameObject:
   m_ObjectHideFlags: 0
@@ -6816,9 +6822,9 @@ MonoBehaviour:
   tileEmpty: {fileID: 1031985776}
   tileCoin: {fileID: 454147450}
   tileCylinder: {fileID: 952926251}
-  tileChampi: {fileID: 1575279503}
-  tileSpikeBall: {fileID: 702709458}
-  tileStar: {fileID: 1342345544}
+  tileChampi: {fileID: 1780172291}
+  tileSpikeBall: {fileID: 1157250535}
+  tileStar: {fileID: 1342345542}
   tileSpikes: {fileID: 1184820119}
   tileMultiple: {fileID: 1144307278}
   textMap: {fileID: 4900000, guid: ababd9e8a7da6d34481afd226656e89f, type: 3}
