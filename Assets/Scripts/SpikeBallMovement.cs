@@ -11,7 +11,9 @@ public class SpikeBallMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //transform.localScale += new Vector3(0.8, 0.8, 0.8);
+        transform.Rotate(0, 0, 0);
+        transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+        transform.position += new Vector3(transform.position.x - 6.4f, transform.position.y + 5.7f, transform.position.z - 0.4f); //11.6 -5.2 17.6
         if (transform.position.x < 2.25) moveRight = true;
         else moveRight = false;
     }
@@ -23,12 +25,12 @@ public class SpikeBallMovement : MonoBehaviour
         {
             rotate += 5;
             transform.Translate(speedRight * Time.deltaTime, Space.World);
-            transform.Rotate(0, rotate, 0);
+            transform.Rotate(0, 0, rotate);
         }
         else
         {
             rotate -= 5;
-            transform.Rotate(0, rotate, 0);
+            transform.Rotate(0, 0, rotate);
             moveRight = false;
             transform.Translate(speedLeft * Time.deltaTime, Space.World);
         }
@@ -36,12 +38,12 @@ public class SpikeBallMovement : MonoBehaviour
         {
             rotate -= 5;
             transform.Translate(speedLeft * Time.deltaTime, Space.World);
-            transform.Rotate(0, rotate, 0);
+            transform.Rotate(0, 0, rotate);
         }
         else
         {
             rotate += 5;
-            transform.Rotate(0, rotate, 0);
+            transform.Rotate(0, 0, rotate);
             moveRight = true;
             transform.Translate(speedRight * Time.deltaTime, Space.World);
         }

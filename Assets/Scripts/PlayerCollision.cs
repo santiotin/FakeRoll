@@ -2,9 +2,10 @@
 
 public class PlayerCollision : MonoBehaviour
 {
-  public PlayerMovement movement;
+    public PlayerMovement movement;
+    Material m_Material;
     public Rigidbody rb;
-    private Transform champi;
+    public GameObject champi;
     bool jumping = false;
     bool big = false;
     float time;
@@ -13,7 +14,8 @@ public class PlayerCollision : MonoBehaviour
     public AudioSource jumpAudio;
     void Start()
     {
-        champi = GameObject.FindGameObjectWithTag("Champi").transform;
+        m_Material = GetComponent<Renderer>().material;
+        champi = GameObject.Find("ChampiTile");
         time = 1000;
     }
     void Update() {
@@ -64,9 +66,14 @@ public class PlayerCollision : MonoBehaviour
                 time = Time.time;
             }
             else time = 1000;
-            Destroy(champi);
+            Destroy(collisionInfo.collider); //champi
             transform.localScale += new Vector3(1, 1, 1);
 
+        }
+        if (collisionInfo.collider.tag == "Star")
+        {
+            m_Material.color = Color.yellow;
+            Destroy(collisionInfo.collider);
         }
 
     }
@@ -86,7 +93,7 @@ public class PlayerCollision : MonoBehaviour
                 time = Time.time;
             }
             else time = 1000;
-            //Destroy(champi); //No se destruye bien, aplicar animaciones
+            Destroy(champi); //No se destruye bien, aplicar animaciones
             transform.localScale += new Vector3(1, 1, 1);
             
         }
