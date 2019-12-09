@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class animationSpikes : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Transform player;
+    public float range = 20.0f;
+    float time = 0;
+    float move = 0.02f;
+    bool pos = false;
+
     void Start()
     {
-        transform.position += new Vector3(transform.position.x + 1.1f, transform.position.y + 4.6f, transform.position.z - 3.4f);//2.6 -5.2 5.6
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
-
     // Update is called once per frame
     void Update()
     {
-        
+        if (Distance() < range)
+        {
+            if (Time.time - time > 0.025f && !pos)
+            {
+                if (transform.position.y < -0.6f && !pos) transform.Translate(0, move, 0);
+                else pos = true;
+                time = Time.time;
+                // se puede hacer mas bonito añadiendo limites de altura i haciendo un movimiento continuo ( cambiar tan bruscamente la pos )
+            }
+        }
+            
+    }
+    private float Distance()
+    {
+        return Vector3.Distance(transform.position, player.position);
     }
 }
