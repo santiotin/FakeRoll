@@ -66,6 +66,9 @@ public class ObstaclesScript : MonoBehaviour
         else if (tileNum == 3){
             Transform tile = Instantiate(allTiles[tileNum], new Vector3(x + 0.25f, 7 , y * 1.45f), Quaternion.identity) as Transform;
         }
+        else if (tileNum == 8){
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3((x*offset) - desplX,-2.6f, (y*offset) - 0.20f), Quaternion.identity) as Transform;
+        }
         else {
             Transform tile = Instantiate(allTiles[tileNum], new Vector3(x+0.25f, 1 , y), Quaternion.identity) as Transform;
         }
