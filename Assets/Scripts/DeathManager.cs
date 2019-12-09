@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//esto es sprint 4
+
 public class DeathManager : MonoBehaviour
 {
     // Start is called before the first frame update

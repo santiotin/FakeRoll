@@ -42,13 +42,16 @@ public class ObstaclesScript : MonoBehaviour
         }
         //spike
         else if (tileNum == 5){
-            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x, 1 , y), Quaternion.identity) as Transform;
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x, 1f , y *1.48f), Quaternion.identity) as Transform;
         }
          else if (tileNum == 4){
-            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x * 1.3f, -2f , y), Quaternion.identity) as Transform;
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x * 1.45f, -2f , y * 1.45f), Quaternion.identity) as Transform;
         }
         else if (tileNum == 3){
-            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x - 0.85f, 1 , y), Quaternion.identity) as Transform;
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x + 0.25f, 7 , y * 1.45f), Quaternion.identity) as Transform;
+        }
+        else if (tileNum == 8){
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3((x*offset) - desplX,-2.6f, (y*offset) - 0.20f), Quaternion.identity) as Transform;
         }
         else {
             Transform tile = Instantiate(allTiles[tileNum], new Vector3(x+0.25f, 1 , y), Quaternion.identity) as Transform;

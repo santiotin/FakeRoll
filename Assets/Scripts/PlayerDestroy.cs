@@ -40,14 +40,14 @@ public class PlayerDestroy : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.name == "block_tile") {
+        if (other.gameObject.name == "block_tile" || other.gameObject.name == "spike_ball") {
             explode();
         }
 
     }
 
     void OnCollisionEnter(Collision  collisionInfo) {
-        if(collisionInfo.gameObject.name == "CylinderTile") explode();
+        if(collisionInfo.gameObject.name == "cylinder_tile") explode();
     }
 
     public void explode() {

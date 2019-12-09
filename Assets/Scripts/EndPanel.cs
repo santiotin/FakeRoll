@@ -17,11 +17,11 @@ public class EndPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.position.z >= 600) {
+        if(player.position.z >= 630) {
             background.SetActive(true);
         }
 
-        if(player.position.z >= 630) {
+        if(player.position.z >= 660) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
