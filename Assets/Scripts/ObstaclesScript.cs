@@ -44,8 +44,16 @@ public class ObstaclesScript : MonoBehaviour
         else if (tileNum == 5){
             Transform tile = Instantiate(allTiles[tileNum], new Vector3(x, 1f , y *1.48f), Quaternion.identity) as Transform;
         }
-         else if (tileNum == 4){
-            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x, -2f , y), Quaternion.identity) as Transform;
+        else if (tileNum == 2) // moneda
+        {
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x * 1.2f, 0f, y * 1.75f), Quaternion.identity) as Transform;
+        }
+        else if (tileNum == 6) //star
+        {
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x * 1.2f, 0f, y * 1.5f), Quaternion.identity) as Transform;
+        }
+        else if (tileNum == 4){ //champi
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x * 1.25f, -2f , y * 1.45f), Quaternion.identity) as Transform;
         }
         else if (tileNum == 3){
             Transform tile = Instantiate(allTiles[tileNum], new Vector3(x + 0.25f, 7 , y * 1.45f), Quaternion.identity) as Transform;

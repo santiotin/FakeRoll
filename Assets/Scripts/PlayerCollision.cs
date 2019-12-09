@@ -24,6 +24,8 @@ public class PlayerCollision : MonoBehaviour
         {
             time = 1000;
             big = false;
+            GetComponent<Rigidbody>().useGravity = !GetComponent<Rigidbody>().useGravity;
+            GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
             transform.localScale -= new Vector3(1, 1, 1);
         }
 
@@ -55,26 +57,6 @@ public class PlayerCollision : MonoBehaviour
             rb.AddForce(0,0,2000);
             jumping = false;
         }
-        if (collisionInfo.collider.tag == "Champi")
-        {
-            // rb.AddForce(0,-1000,0);
-            jumping = false;
-            if (!big) big = true;
-            else big = false;
-            if (big)
-            {
-                time = Time.time;
-            }
-            else time = 1000;
-            Destroy(collisionInfo.collider); //champi
-            transform.localScale += new Vector3(1, 1, 1);
-
-        }
-        if (collisionInfo.collider.tag == "Star")
-        {
-            m_Material.color = Color.yellow;
-            Destroy(collisionInfo.collider);
-        }
 
     }
 
@@ -95,7 +77,28 @@ public class PlayerCollision : MonoBehaviour
             else time = 1000;
             Destroy(champi); //No se destruye bien, aplicar animaciones
             transform.localScale += new Vector3(1, 1, 1);
-            
+        }
+        if (collider.tag == "Champi")
+        {
+            // rb.AddForce(0,-1000,0);
+            jumping = false;
+            if (!big) big = true;
+            else big = false;
+            if (big)
+            {
+                time = Time.time;
+            }
+            else time = 1000;
+            Destroy(collider); //champi
+            GetComponent<Rigidbody>().useGravity = !GetComponent<Rigidbody>().useGravity;
+            GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
+            transform.localScale += new Vector3(1, 1, 1);
+
+        }
+        if (collider.tag == "Star")
+        {
+            m_Material.color = Color.yellow;
+            Destroy(collider);
         }
     }
    

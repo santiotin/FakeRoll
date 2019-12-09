@@ -1108,15 +1108,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9153259c3a6791e4bbf1ecce0d6b3aaa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.33
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9153259c3a6791e4bbf1ecce0d6b3aaa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.28
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9153259c3a6791e4bbf1ecce0d6b3aaa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 9153259c3a6791e4bbf1ecce0d6b3aaa, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1152,11 +1152,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9153259c3a6791e4bbf1ecce0d6b3aaa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.16
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 9153259c3a6791e4bbf1ecce0d6b3aaa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.15
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9153259c3a6791e4bbf1ecce0d6b3aaa, type: 3}
@@ -2015,7 +2015,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 5d34e36d51f04d544beb268250861213, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 5d34e36d51f04d544beb268250861213, type: 3}
       propertyPath: m_LocalRotation.z
@@ -7222,11 +7222,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 50
+    m_MaxSize: 60
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -7338,7 +7338,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 88298ecb4d0fcff45879b1338c17fe54, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: -12.57
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 88298ecb4d0fcff45879b1338c17fe54, type: 3}
       propertyPath: m_LocalRotation.x
