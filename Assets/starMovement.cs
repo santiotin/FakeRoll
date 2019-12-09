@@ -13,7 +13,7 @@ public class starMovement : MonoBehaviour
     void Start()
     {
         transform.Rotate(-90, 0, 0);
-        transform.position += new Vector3(transform.position.x-3.4f, transform.position.y+5.56f, transform.position.z-0.4f);// 8.6 -5.06 8.6
+        //transform.position += new Vector3(transform.position.x-3.4f, transform.position.y+5.56f, transform.position.z-0.4f);// 8.6 -5.06 8.6
     }
     void Update()
     {

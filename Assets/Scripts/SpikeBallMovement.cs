@@ -16,6 +16,7 @@ public class SpikeBallMovement : MonoBehaviour
         //transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
         if (transform.position.x < 2.25) moveRight = true;
         else moveRight = false;
+        transform.Rotate(0, 0, 15);
     }
 
     // Update is called once per frame

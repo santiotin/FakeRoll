@@ -37,15 +37,31 @@ public class ObstaclesScript : MonoBehaviour
         int.TryParse(type, out tileNum);
 
         // empty or block
-        if( tileNum == 0 ||  tileNum == 1) {
+        if( tileNum == 0 ||  tileNum == 1 ) {
              Transform tile = Instantiate(allTiles[tileNum], new Vector3((x*offset) - desplX,-2.6f, (y*offset)), Quaternion.identity) as Transform;
         }
         //spike
         else if (tileNum == 5){
             Transform tile = Instantiate(allTiles[tileNum], new Vector3(x, 1f , y *1.48f), Quaternion.identity) as Transform;
         }
-         else if (tileNum == 4){
-            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x * 1.45f, -2f , y * 1.45f), Quaternion.identity) as Transform;
+        else if (tileNum == 2) // moneda
+        {
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3((x * offset) - 0.8f, 0, (y * offset) - 0.8f), Quaternion.identity) as Transform;
+            tile.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+        }
+        else if (tileNum == 7)
+        {
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3((x * offset) -0.8f, -1.5f, (y * offset)-0.8f), Quaternion.identity) as Transform;
+            tile.localScale = new Vector3(1.8f, 1.8f, 1.8f);
+
+        }
+        else if (tileNum == 6) //star
+        {
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3((x * offset) - 0.8f, 0, (y * offset) - 0.8f), Quaternion.identity) as Transform;
+            tile.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+        else if (tileNum == 4){ //champi
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x * 1.25f, -2f , y * 1.45f), Quaternion.identity) as Transform;
         }
         else if (tileNum == 3){
             Transform tile = Instantiate(allTiles[tileNum], new Vector3(x + 0.25f, 7 , y * 1.45f), Quaternion.identity) as Transform;
