@@ -10,7 +10,7 @@ public class MultipleScript : MonoBehaviour
 
     bool created = false;
     public GameObject blockModel;
-     private Transform player;
+    private Transform player;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -19,7 +19,7 @@ public class MultipleScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Distance() < range && !created) createBlocksDiag();
+        if (!created && Distance() < range) createBlocksDiag();
     }
 
     private float Distance()
@@ -29,7 +29,7 @@ public class MultipleScript : MonoBehaviour
 
     void createBlocksLeftRight() {
         created = true;
-        //create piece
+        
         Vector3 posL = new Vector3(transform.position.x - 1.5f, transform.position.y, transform.position.z + 0.2f);
         Vector3 posR = new Vector3(transform.position.x + 1.5f, transform.position.y, transform.position.z + 0.2f);
         Instantiate(blockModel, posL, transform.rotation);
@@ -38,8 +38,9 @@ public class MultipleScript : MonoBehaviour
     }
 
     void createBlocksDiag() {
+        Debug.Log("holaaaaaaaaaaa");
         created = true;
-        //create piece
+        
         Vector3 posL = new Vector3(transform.position.x - 3.0f, transform.position.y, transform.position.z + 0.2f);
         Vector3 posR = new Vector3(transform.position.x + 3.0f, transform.position.y, transform.position.z + 0.2f);
         Instantiate(blockModel, posL, transform.rotation);

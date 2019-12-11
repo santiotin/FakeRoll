@@ -20,10 +20,11 @@ public class PlayerDestroy : MonoBehaviour
     public Transform deathManager;
     AudioSource exploteAudio;
 
+    public AudioSource destroyAudio;
+
     // Use this for initialization
     void Start() {
 
-        
         //calculate pivot distance
         cubesPivotDistance = cubeSize * cubesInRow / 3;
         //use this value to create pivot vector)
@@ -35,19 +36,26 @@ public class PlayerDestroy : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        
         if(transform.position.y < -0.5) explode();
+        
 
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.name == "block_tile" || other.gameObject.name == "spike_ball") {
-            explode();
+        if (other.gameObject.name == "block_tile" || other.gameObject.name == "spike_ball" || other.gameObject.name == "multiple_tile") {
+            if(!gameObject.GetComponent<PlayerCollision>().isBig())explode();
+            else {
+                destroyAudio.Play();
+            }
         }
 
     }
 
     void OnCollisionEnter(Collision  collisionInfo) {
-        if(collisionInfo.gameObject.name == "cylinder_tile") explode();
+        if(collisionInfo.gameObject.name == "cylinder_tile") {
+            if(!gameObject.GetComponent<PlayerCollision>().isBig())explode();
+        }
     }
 
     public void explode() {
@@ -102,4 +110,6 @@ public class PlayerDestroy : MonoBehaviour
         piece.AddComponent<Rigidbody>();
         piece.GetComponent<Rigidbody>().mass = cubeSize;
     }
+
+    
 }
