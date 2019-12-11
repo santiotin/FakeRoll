@@ -8,7 +8,11 @@ public class EndPanel : MonoBehaviour
     // Start is called before the first frame update
     public Transform player;
 
+    public AudioSource ggAudio;
+
     public GameObject background;
+
+    bool done = false;
     void Start()
     {
         
@@ -17,11 +21,15 @@ public class EndPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.position.z >= 630) {
+        if(player.position.z >= 630 && !done) {
+            Debug.Log("ENTREM DINS GG");
+            done = true;
+            ggAudio.Play();
             background.SetActive(true);
+            
         }
 
-        if(player.position.z >= 660) {
+        if(player.position.z >= 680) {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 

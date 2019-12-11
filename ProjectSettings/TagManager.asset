@@ -12,6 +12,8 @@ TagManager:
   - Fast
   - Champi
   - Star
+  - Coin
+  - Spike
   layers:
   - Default
   - TransparentFX

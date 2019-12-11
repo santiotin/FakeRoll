@@ -9,7 +9,10 @@ public class PlayerMovement : MonoBehaviour
     Vector3 speedLeft = new Vector3(-5f,0,0f);
 
     Vector3 rotationX = new Vector3(720.0f, 0.0f, 0.0f);
-    
+
+
+    public AudioSource gameAudio;
+
     void Update()
     {
         //rb.AddForce(0, 0, forwardForce * Time.deltaTime);
@@ -38,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
                 transform.Translate(speedLeft * Time.deltaTime, Space.World);
             }
         }
+        if (transform.position.z >= 630 ) gameAudio.Stop();
        
     }
 }

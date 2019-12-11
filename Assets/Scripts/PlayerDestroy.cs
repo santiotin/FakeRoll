@@ -43,7 +43,8 @@ public class PlayerDestroy : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.name == "block_tile" || other.gameObject.name == "spike_ball" || other.gameObject.name == "multiple_tile") {
+
+        if (other.gameObject.name == "block_tile" || other.gameObject.name == "spike_ball" || other.gameObject.name == "multiple_tile" || other.gameObject.tag == "Spike") {
             if(!gameObject.GetComponent<PlayerCollision>().isBig())explode();
             else {
                 destroyAudio.Play();

@@ -6,33 +6,54 @@ public class PlayerCollision : MonoBehaviour
     public PlayerMovement movement;
     Material m_Material;
     public Rigidbody rb;
-    public GameObject champi;
+
     bool jumping = false;
     bool big = false;
-    float time;
+    bool starEffect = false;
+
+    float timeBig, timeStar;
+
     Vector3 speedUp = new Vector3(0f,200f,0f);
+
+
+    public AudioSource coinAudio;
+    public AudioSource starAudio;
+    public AudioSource champiAudio;
 
     public Text coins;
 
     int numCoins = 0;
 
+
     public AudioSource jumpAudio;
+    public AudioSource spikeAudio;
+    public AudioSource powerAudio;
+
     void Start()
     {
         m_Material = GetComponent<Renderer>().material;
-        champi = GameObject.Find("ChampiTile");
-        time = 1000;
+        timeBig = 1000;
+        timeStar = 1000;
     }
     void Update() {
         if(transform.position.y > 1) jumping = false;
-        if ((Time.time - time) > 7)
+        if ((Time.time - timeBig) > 7)
         {
-            time = 1000;
+            timeBig = 1000;
             big = false;
             //GetComponent<Rigidbody>().useGravity = !GetComponent<Rigidbody>().useGravity;
             //GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
             GetComponent<Rigidbody>().mass = 1;
             transform.localScale -= new Vector3(1, 1, 1);
+        }
+        if ((Time.time - timeStar) > 7)
+        {
+            timeStar = 1000;
+            starEffect = false;
+            GetComponent<Rigidbody>().useGravity = !GetComponent<Rigidbody>().useGravity;
+            GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
+            m_Material.color = Color.white;
+            powerAudio.Stop();
         }
 
         coins.text = numCoins.ToString();
@@ -80,27 +101,57 @@ public class PlayerCollision : MonoBehaviour
         }
         if (collider.tag == "Champi")
         {
-            // rb.AddForce(0,-1000,0);
             jumping = false;
             if (!big) big = true;
             else big = false;
             if (big)
             {
-                time = Time.time;
+                timeBig = Time.time;
             }
-            else time = 1000;
-            Destroy(collider); //champi
+            else timeBig = 1000;
+            Destroy(collider); //champi collider.gameObject.SetActive(false);
             //GetComponent<Rigidbody>().useGravity = !GetComponent<Rigidbody>().useGravity;
             //GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
             GetComponent<Rigidbody>().mass = 1000;
+            champiAudio.Play();
+
             transform.localScale += new Vector3(1, 1, 1);
 
         }
         if (collider.tag == "Star")
         {
+            jumping = false;
+            if (!starEffect) starEffect = true;
+            else starEffect = false;
+            if (starEffect)
+            {
+                timeStar = Time.time;
+            }
+            else timeStar = 1000;
+            collider.gameObject.SetActive(false);
+            GetComponent<Rigidbody>().useGravity = !GetComponent<Rigidbody>().useGravity;
+            GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
+            starAudio.Play();
             m_Material.color = Color.yellow;
+
+            powerAudio.Play();
+            
             Destroy(collider);
             numCoins++;
+            
+        }
+        if (collider.tag == "Coin")
+        {
+            jumping = false;
+            coinAudio.Play();
+            collider.gameObject.SetActive(false);
+        }
+        if (collider.tag == "Spike")
+        {
+            jumping = false;
+            spikeAudio.Play();
+            collider.gameObject.SetActive(false);
+
         }
     }
 
