@@ -40,7 +40,7 @@ public class PlayerDestroy : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.name == "block_tile" || other.gameObject.name == "spike_ball") {
+        if (other.gameObject.name == "block_tile" || other.gameObject.name == "spike_ball" || other.gameObject.tag == "Spike") {
             explode();
         }
 

@@ -9,6 +9,7 @@ public class animationSpikes : MonoBehaviour
     float time = 0;
     float move = 0.02f;
     bool pos = false;
+    public AudioSource spikeAudio;
 
     void Start()
     {
@@ -19,13 +20,17 @@ public class animationSpikes : MonoBehaviour
     {
         if (Distance() < range)
         {
-            if (Time.time - time > 0.025f && !pos)
+            if (Time.time - time > 0.01f && !pos)
             {
                 if (transform.position.y < -0.6f && !pos) transform.Translate(0, move, 0);
-                else pos = true;
+                else
+                {
+                    pos = true;
+                    spikeAudio.Play();
+                }
                 time = Time.time;
-                // se puede hacer mas bonito añadiendo limites de altura i haciendo un movimiento continuo ( cambiar tan bruscamente la pos )
             }
+  
         }
             
     }
