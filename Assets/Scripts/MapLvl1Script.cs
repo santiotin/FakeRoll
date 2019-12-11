@@ -13,6 +13,7 @@ public class MapLvl1Script : MonoBehaviour
     public Transform tileEmpty;
     public Transform tileEnd;
     public Transform tileFast;
+    public Transform tileMove;
     public TextAsset textMap;
     public List<Transform> allTiles = new List<Transform>();
 
@@ -61,6 +62,7 @@ public class MapLvl1Script : MonoBehaviour
         allTiles.Add(tileEmpty);
         allTiles.Add(tileEnd);
         allTiles.Add(tileFast);
+        allTiles.Add(tileMove);
     }
 
 }

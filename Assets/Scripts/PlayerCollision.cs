@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -14,9 +15,16 @@ public class PlayerCollision : MonoBehaviour
 
     Vector3 speedUp = new Vector3(0f,200f,0f);
 
+
     public AudioSource coinAudio;
     public AudioSource starAudio;
     public AudioSource champiAudio;
+
+    public Text coins;
+
+    int numCoins = 0;
+
+
     public AudioSource jumpAudio;
     public AudioSource spikeAudio;
     public AudioSource powerAudio;
@@ -33,8 +41,9 @@ public class PlayerCollision : MonoBehaviour
         {
             timeBig = 1000;
             big = false;
-            GetComponent<Rigidbody>().useGravity = !GetComponent<Rigidbody>().useGravity;
-            GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
+            //GetComponent<Rigidbody>().useGravity = !GetComponent<Rigidbody>().useGravity;
+            //GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
+            GetComponent<Rigidbody>().mass = 1;
             transform.localScale -= new Vector3(1, 1, 1);
         }
         if ((Time.time - timeStar) > 7)
@@ -47,17 +56,20 @@ public class PlayerCollision : MonoBehaviour
             powerAudio.Stop();
         }
 
+        coins.text = numCoins.ToString();
+
     }
 
     void OnCollisionEnter(Collision  collisionInfo)
     {
-        if (collisionInfo.collider.name == "block_tile") {//tag obstacle per qualsevol obj. amb aquest tag
+        if (collisionInfo.collider.name == "block_tile" || collisionInfo.collider.name == "multiple_tile") {//tag obstacle per qualsevol obj. amb aquest tag
             //you die
-            movement.enabled = false;
+            if(!big) movement.enabled = false;
         }
         if (collisionInfo.collider.name == "jump_tile" && !jumping) {
             //rb.constraints = RigidbodyConstraints.None;
-            rb.AddForce(0, 900, 0);
+            if(!big)rb.AddForce(0, 900, 0);
+            else rb.AddForce(0, 900000, 0);
             jumping = true;
             jumpAudio.Play();
             //gameObject.collider.enabled = true;
@@ -97,10 +109,12 @@ public class PlayerCollision : MonoBehaviour
                 timeBig = Time.time;
             }
             else timeBig = 1000;
-            collider.gameObject.SetActive(false);
-            GetComponent<Rigidbody>().useGravity = !GetComponent<Rigidbody>().useGravity;
-            GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
+            Destroy(collider); //champi collider.gameObject.SetActive(false);
+            //GetComponent<Rigidbody>().useGravity = !GetComponent<Rigidbody>().useGravity;
+            //GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
+            GetComponent<Rigidbody>().mass = 1000;
             champiAudio.Play();
+
             transform.localScale += new Vector3(1, 1, 1);
 
         }
@@ -119,7 +133,11 @@ public class PlayerCollision : MonoBehaviour
             GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
             starAudio.Play();
             m_Material.color = Color.yellow;
+
             powerAudio.Play();
+            
+            Destroy(collider);
+            numCoins++;
             
         }
         if (collider.tag == "Coin")
@@ -133,7 +151,12 @@ public class PlayerCollision : MonoBehaviour
             jumping = false;
             spikeAudio.Play();
             collider.gameObject.SetActive(false);
+
         }
+    }
+
+    public bool isBig() {
+        return big;
     }
    
 }
