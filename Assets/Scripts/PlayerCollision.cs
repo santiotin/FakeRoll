@@ -19,6 +19,8 @@ public class PlayerCollision : MonoBehaviour
     public AudioSource champiAudio;
     public AudioSource jumpAudio;
     public AudioSource spikeAudio;
+    public AudioSource powerAudio;
+
     void Start()
     {
         m_Material = GetComponent<Renderer>().material;
@@ -27,7 +29,7 @@ public class PlayerCollision : MonoBehaviour
     }
     void Update() {
         if(transform.position.y > 1) jumping = false;
-        if ((Time.time - timeBig) > 3)
+        if ((Time.time - timeBig) > 7)
         {
             timeBig = 1000;
             big = false;
@@ -35,13 +37,14 @@ public class PlayerCollision : MonoBehaviour
             GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
             transform.localScale -= new Vector3(1, 1, 1);
         }
-        if ((Time.time - timeStar) > 3)
+        if ((Time.time - timeStar) > 7)
         {
             timeStar = 1000;
             starEffect = false;
             GetComponent<Rigidbody>().useGravity = !GetComponent<Rigidbody>().useGravity;
             GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
             m_Material.color = Color.white;
+            powerAudio.Stop();
         }
 
     }
@@ -116,6 +119,7 @@ public class PlayerCollision : MonoBehaviour
             GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
             starAudio.Play();
             m_Material.color = Color.yellow;
+            powerAudio.Play();
             
         }
         if (collider.tag == "Coin")

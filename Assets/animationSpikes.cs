@@ -20,7 +20,7 @@ public class animationSpikes : MonoBehaviour
     {
         if (Distance() < range)
         {
-            if (Time.time - time > 0.01f && !pos)
+            if (Time.time - time > 0.005f && !pos)
             {
                 if (transform.position.y < -0.6f && !pos) transform.Translate(0, move, 0);
                 else
