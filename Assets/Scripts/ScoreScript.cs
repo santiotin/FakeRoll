@@ -7,7 +7,7 @@ public class ScoreScript : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform player;
-    public Text scoreText;
+    //public Text scoreText;
 
     public Slider slider;
 
@@ -22,7 +22,7 @@ public class ScoreScript : MonoBehaviour
     {
         float num = player.position.z + 1.0f;
         num = num / 10f;
-        scoreText.text = num.ToString("0");
+        //scoreText.text = num.ToString("0");
         slider.value = num;
     }
 }

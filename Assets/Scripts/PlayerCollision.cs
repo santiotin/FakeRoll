@@ -15,7 +15,6 @@ public class PlayerCollision : MonoBehaviour
 
     Vector3 speedUp = new Vector3(0f,200f,0f);
 
-
     public AudioSource coinAudio;
     public AudioSource starAudio;
     public AudioSource champiAudio;
@@ -109,12 +108,9 @@ public class PlayerCollision : MonoBehaviour
                 timeBig = Time.time;
             }
             else timeBig = 1000;
-            Destroy(collider); //champi collider.gameObject.SetActive(false);
-            //GetComponent<Rigidbody>().useGravity = !GetComponent<Rigidbody>().useGravity;
-            //GetComponent<Collider>().enabled = !GetComponent<Collider>().enabled;
+            collider.gameObject.SetActive(false);
             GetComponent<Rigidbody>().mass = 1000;
             champiAudio.Play();
-
             transform.localScale += new Vector3(1, 1, 1);
 
         }
@@ -137,7 +133,7 @@ public class PlayerCollision : MonoBehaviour
             powerAudio.Play();
             
             Destroy(collider);
-            numCoins++;
+            
             
         }
         if (collider.tag == "Coin")
@@ -145,6 +141,7 @@ public class PlayerCollision : MonoBehaviour
             jumping = false;
             coinAudio.Play();
             collider.gameObject.SetActive(false);
+            numCoins++;
         }
         if (collider.tag == "Spike")
         {
