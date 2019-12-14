@@ -56,8 +56,8 @@ public class PlayerCollision : MonoBehaviour
                 jumping = true;
                 jumpAudio.Play();
 
-                if(!big)rb.AddForce(0, 900, 0);
-                else rb.AddForce(0, 900000, 0);
+                if(!big)rb.AddForce(0, 875, 0);
+                else rb.AddForce(0, 875000, 0);
             }
             
         }

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//this is integrations
-public class PlayerDestroy : MonoBehaviour
+public class SpikeBallDestroy : MonoBehaviour
 {
     public float cubeSize = 0.2f;
     public int cubesInRow = 5;
@@ -11,60 +10,41 @@ public class PlayerDestroy : MonoBehaviour
     float cubesPivotDistance;
     Vector3 cubesPivot;
 
-    public float explosionForce = 50f;
-    public float explosionRadius = 4f;
-    public float explosionUpward = 0.4f;
+    public float explosionForce = 100;
+    public float explosionRadius = 10f;
+    public float explosionUpward = 2f;
 
-    public Material material;
+    public AudioSource explodeAudio;
 
-    public GameObject gameManager;
-
-    // Use this for initialization
-    void Start() {
-
-        //calculate pivot distance
+    // Start is called before the first frame update
+    void Start()
+    {
+         //calculate pivot distance
         cubesPivotDistance = cubeSize * cubesInRow / 3;
         //use this value to create pivot vector)
         cubesPivot = new Vector3(cubesPivotDistance, cubesPivotDistance, cubesPivotDistance);
 
+
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         
-        if(transform.position.y < -0.5) explode();
-        
-
     }
 
     private void OnTriggerEnter(Collider other) {
-
-        if (other.gameObject.name == "block_tile" || other.gameObject.name == "multiple_tile") {
-            if( !gameObject.GetComponent<PlayerCollision>().isStar() && 
-                !gameObject.GetComponent<PlayerCollision>().isBig() )
+        if (other.gameObject.name == "Player") {
+            if( other.gameObject.GetComponent<PlayerCollision>().isStar()) 
                 explode();
         }
 
-        if (other.gameObject.name == "spike_ball" || other.gameObject.tag == "Spike") {
-            if( !gameObject.GetComponent<PlayerCollision>().isStar())
-                explode();
-        }
-
-    }
-
-    void OnCollisionEnter(Collision  collisionInfo) {
-        if(collisionInfo.gameObject.name == "cylinder_tile") {
-            if( !gameObject.GetComponent<PlayerCollision>().isStar())
-                explode();
-        }
     }
 
     public void explode() {
-        //make object disappear
-        gameManager.GetComponent<AudioSource>().Play();
-        gameObject.SetActive(false);
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        explodeAudio.Play();
         
-
         //loop 3 times to create 5x5x5 pieces in x,y,z coordinates
         for (int x = 0; x < cubesInRow; x++) {
             for (int y = 0; y < cubesInRow; y++) {
@@ -88,7 +68,7 @@ public class PlayerDestroy : MonoBehaviour
             }
         }
 
-        gameManager.GetComponent<GameManagerScript>().manageDeath();
+        Destroy(gameObject, 0.5f);
 
     }
 
@@ -99,11 +79,14 @@ public class PlayerDestroy : MonoBehaviour
 
         piece = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 
-        piece.GetComponent<Renderer>().material = material;
+        piece.GetComponent<MeshFilter>().sharedMesh = gameObject.GetComponent<MeshFilter>().sharedMesh;
+        piece.GetComponent<Renderer>().material = gameObject.GetComponent<Renderer>().material;
+
+        piece.transform.Rotate(0,0,90,Space.Self);
 
 
         //set piece position and scale
-        piece.transform.position = transform.position + new Vector3(cubeSize * x, cubeSize * y, cubeSize * z) - cubesPivot;
+        piece.transform.position = transform.position + new Vector3((cubeSize * x), (cubeSize * y), (cubeSize * z)) - cubesPivot;
         piece.transform.localScale = new Vector3(cubeSize, cubeSize, cubeSize);
 
 
@@ -111,6 +94,4 @@ public class PlayerDestroy : MonoBehaviour
         piece.AddComponent<Rigidbody>();
         piece.GetComponent<Rigidbody>().mass = cubeSize;
     }
-
-    
 }

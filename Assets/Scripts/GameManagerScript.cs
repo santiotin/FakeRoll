@@ -19,6 +19,10 @@ public class GameManagerScript : MonoBehaviour
 
     public GameObject deadPanel;
 
+    public AudioSource backgroundAudio;
+
+    public AudioSource ggAudio;
+
     void Start()
     {
         
@@ -43,17 +47,20 @@ public class GameManagerScript : MonoBehaviour
 
     public void showEndPanel() {
         endPanel.SetActive(true);
+        backgroundAudio.Stop();
+        ggAudio.Play();
         StartCoroutine(changeScene(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     public void manageDeath() {
+        backgroundAudio.Stop();
         deadPanel.SetActive(true);
         StartCoroutine(changeScene(0));
 
     }
 
     IEnumerator changeScene(int sceneNum) {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         SceneManager.LoadScene(sceneNum);
     }
 }

@@ -18,14 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 speed;
 
-    public GameObject particleSystemContainer;
-
-    public AudioSource gameAudio;
-
     void start() {
         speed = speedStop;
-        Debug.Log(particleSystemContainer);
-        particleSystemContainer.GetComponent<ParticleSystem>().Stop();
         started = false;
     }
 
@@ -46,25 +40,24 @@ public class PlayerMovement : MonoBehaviour
         else{
             if (Input.GetKey("d") && started)
             {
-                //rb.AddForce(30, 0, 0);
-                //transform.position += speedForward * Time.deltaTime;
-                transform.Translate(speedRight * Time.deltaTime, Space.World);
+                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(80000, 0, 0);
+                else rb.AddForce(80, 0, 0);
+                //transform.Translate(speedRight * Time.deltaTime, Space.World);
 
             }
             if (Input.GetKey("a") && started)
             {
-                //rb.AddForce(-sidewaysForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-                transform.Translate(speedLeft * Time.deltaTime, Space.World);
+                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(-80000, 0, 0);
+                else rb.AddForce(-80, 0, 0);
+                //transform.Translate(speedLeft * Time.deltaTime, Space.World);
             }
         }
-        if (transform.position.z >= 630 ) gameAudio.Stop();
        
     }
 
     public void startGame() {
         speed = speedForward;
         started = true;
-        particleSystemContainer.GetComponent<ParticleSystem>().Play();
 
     }
 
