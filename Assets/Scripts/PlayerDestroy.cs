@@ -17,8 +17,7 @@ public class PlayerDestroy : MonoBehaviour
 
     public Material material;
 
-    public Transform deathManager;
-    AudioSource exploteAudio;
+    public GameObject gameManager;
 
     public AudioSource destroyAudio;
 
@@ -29,8 +28,6 @@ public class PlayerDestroy : MonoBehaviour
         cubesPivotDistance = cubeSize * cubesInRow / 3;
         //use this value to create pivot vector)
         cubesPivot = new Vector3(cubesPivotDistance, cubesPivotDistance, cubesPivotDistance);
-
-        exploteAudio = deathManager.GetComponent<AudioSource>();
 
     }
 
@@ -44,24 +41,29 @@ public class PlayerDestroy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
 
-        if (other.gameObject.name == "block_tile" || other.gameObject.name == "spike_ball" || other.gameObject.name == "multiple_tile" || other.gameObject.tag == "Spike") {
-            if(!gameObject.GetComponent<PlayerCollision>().isBig())explode();
-            else {
-                destroyAudio.Play();
-            }
+        if (other.gameObject.name == "block_tile" || other.gameObject.name == "multiple_tile") {
+            if( !gameObject.GetComponent<PlayerCollision>().isStar() && 
+                !gameObject.GetComponent<PlayerCollision>().isBig() )
+                explode();
+        }
+
+        if (other.gameObject.name == "spike_ball" || other.gameObject.tag == "Spike") {
+            if( !gameObject.GetComponent<PlayerCollision>().isStar())
+                explode();
         }
 
     }
 
     void OnCollisionEnter(Collision  collisionInfo) {
         if(collisionInfo.gameObject.name == "cylinder_tile") {
-            if(!gameObject.GetComponent<PlayerCollision>().isBig())explode();
+            if( !gameObject.GetComponent<PlayerCollision>().isStar())
+                explode();
         }
     }
 
     public void explode() {
         //make object disappear
-        exploteAudio.Play();
+        gameManager.GetComponent<AudioSource>().Play();
         gameObject.SetActive(false);
         
 
@@ -88,7 +90,7 @@ public class PlayerDestroy : MonoBehaviour
             }
         }
 
-        deathManager.GetComponent<DeathManager>().manageDeath();
+        gameManager.GetComponent<GameManagerScript>().manageDeath();
 
     }
 

@@ -12,7 +12,6 @@ public class EndPanel : MonoBehaviour
 
     public GameObject background;
 
-    bool done = false;
     void Start()
     {
         
@@ -21,15 +20,15 @@ public class EndPanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.position.z >= 630 && !done) {
+        if(player.position.z >= 630) {
             Debug.Log("ENTREM DINS GG");
-            done = true;
             ggAudio.Play();
             background.SetActive(true);
             
         }
 
         if(player.position.z >= 680) {
+            Debug.Log("ENTREM DINS holaaaaa");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
