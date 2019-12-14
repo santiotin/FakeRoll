@@ -10,9 +10,13 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 rotationX = new Vector3(720.0f, 0.0f, 0.0f);
 
+    private Transform background;
 
     public AudioSource gameAudio;
-
+    void Start()
+    {
+        background = GameObject.FindGameObjectWithTag("Background").transform;
+    }
     void Update()
     {
         //rb.AddForce(0, 0, forwardForce * Time.deltaTime);
@@ -42,6 +46,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         if (transform.position.z >= 630 ) gameAudio.Stop();
-       
+        background.position = new Vector3(background.position.x, background.position.y, transform.position.z + 5);
     }
 }

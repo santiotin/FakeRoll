@@ -61,7 +61,7 @@ public class ObstaclesScript : MonoBehaviour
             tile.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         }
         else if (tileNum == 4){ //champi
-            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x * 1.25f, -2f , y * 1.45f), Quaternion.identity) as Transform;
+            Transform tile = Instantiate(allTiles[tileNum], new Vector3(x * 1.4f, -2f , y * 1.45f), Quaternion.identity) as Transform;
         }
         else if (tileNum == 3){
             Transform tile = Instantiate(allTiles[tileNum], new Vector3(x + 0.25f, 7 , y * 1.45f), Quaternion.identity) as Transform;
