@@ -19,9 +19,15 @@ public class GameManagerScript : MonoBehaviour
 
     public GameObject deadPanel;
 
+    public GameObject startMenu;
+
+    public GameObject creditsMenu;
+
     public AudioSource backgroundAudio;
 
     public AudioSource ggAudio;
+
+    bool started = false;
 
     void Start()
     {
@@ -31,10 +37,23 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        if (Input.GetKey("1") && !started ) {
+            startGame();
+        }
+        if (Input.GetKey("2") && !started ) {
+            showCreditsMenu();
+        }
+        if (Input.GetKey("3") && !started ) {
+            QuitGame();
+        }
+        if (Input.GetKey("0") && !started ) {
+            back();
+        }
     }
 
     public void startGame() {
+        started = true;
         mainMenu.SetActive(false);
         startPanel.SetActive(true);
         hudPanel.SetActive(true);
@@ -62,5 +81,20 @@ public class GameManagerScript : MonoBehaviour
     IEnumerator changeScene(int sceneNum) {
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene(sceneNum);
+    }
+
+    public void showCreditsMenu() {
+        startMenu.SetActive(false);
+        creditsMenu.SetActive(true);
+    }
+
+    public void back() {
+        startMenu.SetActive(true);
+        creditsMenu.SetActive(false);
+    }
+
+    public void QuitGame() {
+        Debug.Log("Quit!");
+        Application.Quit();
     }
 }
