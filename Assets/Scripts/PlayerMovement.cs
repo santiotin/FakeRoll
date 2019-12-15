@@ -42,15 +42,15 @@ public class PlayerMovement : MonoBehaviour
             {
                 //antes la fuerza era 80 y comentando la linea de abajo
                 transform.Translate(speedRight * Time.deltaTime, Space.World);
-                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(40000, 0, 0);
-                else rb.AddForce(40, 0, 0);
+                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(60000, 0, 0);
+                else rb.AddForce(60, 0, 0);
 
             }
             if (Input.GetKey("a") && started)
             {
                 transform.Translate(speedLeft * Time.deltaTime, Space.World);
-                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(-40000, 0, 0);
-                else rb.AddForce(-40, 0, 0);
+                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(-60000, 0, 0);
+                else rb.AddForce(-60, 0, 0);
             }
         }
        
