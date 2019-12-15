@@ -35,9 +35,10 @@ public class BlockDestroyScript : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log(other);
         if (other.gameObject.name == "Player") {
-            if(other.gameObject.GetComponent<PlayerCollision>().isBig()) explode();
+            if( other.gameObject.GetComponent<PlayerCollision>().isStar() || 
+                other.gameObject.GetComponent<PlayerCollision>().isBig() ) 
+                explode();
         }
 
     }

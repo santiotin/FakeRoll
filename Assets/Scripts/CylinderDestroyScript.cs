@@ -34,10 +34,10 @@ public class CylinderDestroyScript : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision player) {
-        if (player.gameObject.name == "Player") {
-            //if(player.gameObject.GetComponent<PlayerCollision>().isBig()) explode();
-            explode();
+    private void OnCollisionEnter(Collision other) {
+        if (other.gameObject.name == "Player") {
+            if( other.gameObject.GetComponent<PlayerCollision>().isStar()) 
+                explode();
         }
 
     }
@@ -88,7 +88,7 @@ public class CylinderDestroyScript : MonoBehaviour
 
 
         //set piece position and scale
-        piece.transform.position = transform.position + new Vector3((cubeSize * x) - 1.0f, (cubeSize * y) + 1.7f, (cubeSize * z) - 1.0f) - cubesPivot;
+        piece.transform.position = transform.position + new Vector3((cubeSize * x), (cubeSize * y), (cubeSize * z) + 1.0f) - cubesPivot;
         piece.transform.localScale = new Vector3(cubeSize, cubeSize, cubeSize);
 
 
