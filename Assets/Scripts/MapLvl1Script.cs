@@ -11,6 +11,9 @@ public class MapLvl1Script : MonoBehaviour
     public Transform tileJump;
     public Transform tileDie;
     public Transform tileEmpty;
+    public Transform tileEnd;
+    public Transform tileFast;
+    public Transform tileMove;
     public TextAsset textMap;
     public List<Transform> allTiles = new List<Transform>();
 
@@ -30,7 +33,7 @@ public class MapLvl1Script : MonoBehaviour
         int tileNum = 0;
         int.TryParse(type, out tileNum);
 
-        Transform tile = Instantiate(allTiles[tileNum], new Vector3(x*offset,-3.0f,y*offset), Quaternion.identity) as Transform;
+        Transform tile = Instantiate(allTiles[tileNum], new Vector3(x*offset,-3.0f, y*offset), Quaternion.identity) as Transform;
         //GameObject newTile = Instantiate(tilePrefabs[tileNum]);
 
         //newTile.Transform.position = new Vector3(worldStart.x + (Tile));
@@ -57,6 +60,9 @@ public class MapLvl1Script : MonoBehaviour
         allTiles.Add(tileJump);
         allTiles.Add(tileDie);
         allTiles.Add(tileEmpty);
+        allTiles.Add(tileEnd);
+        allTiles.Add(tileFast);
+        allTiles.Add(tileMove);
     }
 
 }

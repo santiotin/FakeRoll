@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//this is integrations
 public class PlayerDestroy : MonoBehaviour
 {
     public float cubeSize = 0.2f;
@@ -16,10 +17,11 @@ public class PlayerDestroy : MonoBehaviour
 
     public Material material;
 
+    public GameObject gameManager;
+
     // Use this for initialization
     void Start() {
 
-        
         //calculate pivot distance
         cubesPivotDistance = cubeSize * cubesInRow / 3;
         //use this value to create pivot vector)
@@ -29,20 +31,39 @@ public class PlayerDestroy : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if(transform.position.y < -1) explode();
+        
+        if(transform.position.y < -0.5) explode();
+        
 
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.name == "block_tile") {
-            explode();
+
+        if (other.gameObject.name == "block_tile" || other.gameObject.name == "multiple_tile") {
+            if( !gameObject.GetComponent<PlayerCollision>().isStar() && 
+                !gameObject.GetComponent<PlayerCollision>().isBig() )
+                explode();
+        }
+
+        if (other.gameObject.name == "spike_ball" || other.gameObject.tag == "Spike") {
+            if( !gameObject.GetComponent<PlayerCollision>().isStar())
+                explode();
         }
 
     }
 
+    void OnCollisionEnter(Collision  collisionInfo) {
+        if(collisionInfo.gameObject.name == "cylinder_tile") {
+            if( !gameObject.GetComponent<PlayerCollision>().isStar())
+                explode();
+        }
+    }
+
     public void explode() {
         //make object disappear
+        gameManager.GetComponent<AudioSource>().Play();
         gameObject.SetActive(false);
+        
 
         //loop 3 times to create 5x5x5 pieces in x,y,z coordinates
         for (int x = 0; x < cubesInRow; x++) {
@@ -67,12 +88,15 @@ public class PlayerDestroy : MonoBehaviour
             }
         }
 
+        gameManager.GetComponent<GameManagerScript>().manageDeath();
+
     }
 
     void createPiece(int x, int y, int z) {
 
         //create piece
         GameObject piece;
+
         piece = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 
         piece.GetComponent<Renderer>().material = material;
@@ -82,8 +106,11 @@ public class PlayerDestroy : MonoBehaviour
         piece.transform.position = transform.position + new Vector3(cubeSize * x, cubeSize * y, cubeSize * z) - cubesPivot;
         piece.transform.localScale = new Vector3(cubeSize, cubeSize, cubeSize);
 
+
         //add rigidbody and set mass
         piece.AddComponent<Rigidbody>();
         piece.GetComponent<Rigidbody>().mass = cubeSize;
     }
+
+    
 }

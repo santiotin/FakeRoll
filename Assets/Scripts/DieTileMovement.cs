@@ -4,7 +4,7 @@ using System.Collections;
 
 public class DieTileMovement : MonoBehaviour
 {
-    private float range = 10.0f;
+    public float range = 20.0f;
     private Transform player;
     public Rigidbody rb;
 
@@ -16,7 +16,7 @@ public class DieTileMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Distance() < 20) rb.useGravity = true;
+        if (Distance() < range) rb.useGravity = true;
     }
 
     private float Distance()
