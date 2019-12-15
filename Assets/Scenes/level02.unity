@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376a067eb3546e64aae0c5bf76ef27b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touched: {fileID: 2100000, guid: 640dc2f025ee433489ca50d9f685de47, type: 2}
+  touched: {fileID: 2100000, guid: c787e99a610f71a45bcf90ee318a1228, type: 2}
   player: {fileID: 301034524}
 --- !u!65 &70168090
 BoxCollider:
@@ -7742,6 +7742,8 @@ MonoBehaviour:
   endPanel: {fileID: 1632562266}
   hudPanel: {fileID: 1777761977}
   deadPanel: {fileID: 1940127963}
+  startMenu: {fileID: 0}
+  creditsMenu: {fileID: 0}
   backgroundAudio: {fileID: 652150518}
   ggAudio: {fileID: 652150519}
 --- !u!4 &652150516
@@ -9204,7 +9206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376a067eb3546e64aae0c5bf76ef27b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  touched: {fileID: 2100000, guid: 640dc2f025ee433489ca50d9f685de47, type: 2}
+  touched: {fileID: 2100000, guid: c787e99a610f71a45bcf90ee318a1228, type: 2}
   player: {fileID: 301034524}
 --- !u!1 &1010572395
 GameObject:
