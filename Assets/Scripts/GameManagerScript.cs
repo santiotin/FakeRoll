@@ -25,7 +25,7 @@ public class GameManagerScript : MonoBehaviour
 
     void Start()
     {
-        
+        if(SceneManager.GetActiveScene().buildIndex != 0) startGame();
     }
 
     // Update is called once per frame
@@ -60,7 +60,7 @@ public class GameManagerScript : MonoBehaviour
     }
 
     IEnumerator changeScene(int sceneNum) {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         SceneManager.LoadScene(sceneNum);
     }
 }

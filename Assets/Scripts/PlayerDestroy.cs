@@ -19,6 +19,8 @@ public class PlayerDestroy : MonoBehaviour
 
     public GameObject gameManager;
 
+    AudioSource explote;
+
     // Use this for initialization
     void Start() {
 
@@ -26,6 +28,8 @@ public class PlayerDestroy : MonoBehaviour
         cubesPivotDistance = cubeSize * cubesInRow / 3;
         //use this value to create pivot vector)
         cubesPivot = new Vector3(cubesPivotDistance, cubesPivotDistance, cubesPivotDistance);
+
+        explote = gameManager.GetComponents<AudioSource>()[1];
 
     }
 
@@ -61,7 +65,7 @@ public class PlayerDestroy : MonoBehaviour
 
     public void explode() {
         //make object disappear
-        gameManager.GetComponent<AudioSource>().Play();
+        explote.Play();
         gameObject.SetActive(false);
         
 

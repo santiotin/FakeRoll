@@ -26,6 +26,7 @@ public class PlayerCollision : MonoBehaviour
     public AudioSource jumpAudio;
     public AudioSource spikeAudio;
     public AudioSource powerAudio;
+    public AudioSource backgroundAudio;
 
     void Start()
     {
@@ -139,6 +140,7 @@ public class PlayerCollision : MonoBehaviour
             GetComponent<Rigidbody>().mass = 1000;
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
             
+            backgroundAudio.Pause();
             starAudio.Play();
             powerAudio.Play();
 
@@ -152,6 +154,7 @@ public class PlayerCollision : MonoBehaviour
             GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
 
             powerAudio.Stop();
+            backgroundAudio.UnPause();
 
             StartCoroutine(changeToNormalColor());
         }
