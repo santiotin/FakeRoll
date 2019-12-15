@@ -1137,6 +1137,7 @@ MonoBehaviour:
   jumpAudio: {fileID: 301034530}
   spikeAudio: {fileID: 301034535}
   powerAudio: {fileID: 301034536}
+  backgroundAudio: {fileID: 652150518}
 --- !u!114 &301034528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1900,20 +1901,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 546877008}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1993467531}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 652150515}
+        m_MethodName: back
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2245,7 +2235,7 @@ MonoBehaviour:
   tileEnd: {fileID: 259208965}
   tileFast: {fileID: 1599395750}
   tileMove: {fileID: 70168093}
-  textMap: {fileID: 4900000, guid: 936efb5b038410a4694556e344cf8d8b, type: 3}
+  textMap: {fileID: 4900000, guid: 62b4d4d3366a0854cb39f1397606d82f, type: 3}
   allTiles: []
 --- !u!4 &447932972
 Transform:
@@ -7298,7 +7288,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 546877009}
+      - m_Target: {fileID: 652150515}
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
@@ -7713,8 +7703,8 @@ GameObject:
   m_Component:
   - component: {fileID: 652150516}
   - component: {fileID: 652150515}
-  - component: {fileID: 652150517}
   - component: {fileID: 652150518}
+  - component: {fileID: 652150517}
   - component: {fileID: 652150519}
   m_Layer: 0
   m_Name: GameManager
@@ -7741,6 +7731,8 @@ MonoBehaviour:
   endPanel: {fileID: 1632562266}
   hudPanel: {fileID: 1777761977}
   deadPanel: {fileID: 1940127963}
+  startMenu: {fileID: 546877008}
+  creditsMenu: {fileID: 1993467531}
   backgroundAudio: {fileID: 652150518}
   ggAudio: {fileID: 652150519}
 --- !u!4 &652150516
@@ -9072,7 +9064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -19253,7 +19245,7 @@ MonoBehaviour:
   tileStar: {fileID: 1342345542}
   tileSpikes: {fileID: 1184820119}
   tileMultiple: {fileID: 1113136518}
-  textMap: {fileID: 4900000, guid: ababd9e8a7da6d34481afd226656e89f, type: 3}
+  textMap: {fileID: 4900000, guid: 2ce56d40ac25af74b9cf7ba22e840bb6, type: 3}
   allTiles: []
 --- !u!4 &1403039119
 Transform:
@@ -20906,20 +20898,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 546877008}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1993467531}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 652150515}
+        m_MethodName: showCreditsMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

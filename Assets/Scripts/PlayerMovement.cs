@@ -40,16 +40,17 @@ public class PlayerMovement : MonoBehaviour
         else{
             if (Input.GetKey("d") && started)
             {
-                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(80000, 0, 0);
-                else rb.AddForce(80, 0, 0);
-                //transform.Translate(speedRight * Time.deltaTime, Space.World);
+                //antes la fuerza era 80 y comentando la linea de abajo
+                transform.Translate(speedRight * Time.deltaTime, Space.World);
+                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(40000, 0, 0);
+                else rb.AddForce(40, 0, 0);
 
             }
             if (Input.GetKey("a") && started)
             {
-                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(-80000, 0, 0);
-                else rb.AddForce(-80, 0, 0);
-                //transform.Translate(speedLeft * Time.deltaTime, Space.World);
+                transform.Translate(speedLeft * Time.deltaTime, Space.World);
+                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(-40000, 0, 0);
+                else rb.AddForce(-40, 0, 0);
             }
         }
        
