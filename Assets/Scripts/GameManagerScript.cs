@@ -50,6 +50,15 @@ public class GameManagerScript : MonoBehaviour
         if (Input.GetKey("0") && !started ) {
             back();
         }
+        if (Input.GetKey(KeyCode.F1)) {
+            SceneManager.LoadScene(0);
+        }
+        if (Input.GetKey(KeyCode.F2)) {
+            SceneManager.LoadScene(1);
+        }
+        if (Input.GetKey(KeyCode.F3)) {
+            SceneManager.LoadScene(2);
+        }
     }
 
     public void startGame() {
@@ -62,6 +71,7 @@ public class GameManagerScript : MonoBehaviour
 
     public void hideStartPanel() {
         startPanel.SetActive(false);
+        player.GetComponent<PlayerMovement>().startRace();
     }
 
     public void showEndPanel() {

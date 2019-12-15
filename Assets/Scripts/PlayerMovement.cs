@@ -69,4 +69,8 @@ public class PlayerMovement : MonoBehaviour
     public void incrementVel() {
         speed = speedForward;
     }
+
+    public void startRace() {
+        //started = true;
+    }
 }
