@@ -29,7 +29,7 @@ public class ScoreScript : MonoBehaviour
 
         if (num >= 5) {
             float perc = (num-5) * 100 / 58;
-            if(perc < 101) percText.text = perc.ToString("0") + "%"; 
+            if(perc < 100) percText.text = perc.ToString("0") + "%"; 
         }
     }
 }

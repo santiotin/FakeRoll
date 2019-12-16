@@ -36,21 +36,22 @@ public class PlayerMovement : MonoBehaviour
         {
             if (mousePos.x > 455 && mousePos.x < 820 && mousePos.y > 0 && mousePos.y <= 420) transform.Translate(speedRight * Time.deltaTime, Space.World);//405
             else if (mousePos.x > 0 && mousePos.x <= 355 && mousePos.y > 0 && mousePos.y <= 420) transform.Translate(speedLeft * Time.deltaTime, Space.World);
+            //transform.position = new Vector3(mousePos.x, transform.position.y, transform.position.z);
         }
         else{
             if (Input.GetKey("d") && started)
             {
                 //antes la fuerza era 80 y comentando la linea de abajo
                 transform.Translate(speedRight * Time.deltaTime, Space.World);
-                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(60000, 0, 0);
-                else rb.AddForce(60, 0, 0);
+                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(50000, 0, 0);
+                else rb.AddForce(50, 0, 0);
 
             }
             if (Input.GetKey("a") && started)
             {
                 transform.Translate(speedLeft * Time.deltaTime, Space.World);
-                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(-60000, 0, 0);
-                else rb.AddForce(-60, 0, 0);
+                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(-50000, 0, 0);
+                else rb.AddForce(-50, 0, 0);
             }
         }
        
