@@ -42,9 +42,6 @@ public class GameManagerScript : MonoBehaviour
         if (Input.GetKey(KeyCode.F4)) {
             SceneManager.LoadScene(0);
         }
-        if (Input.GetKey("p")) {
-            SceneManager.LoadScene(0);
-        }
     }
 
     public void startGame() {
