@@ -11,9 +11,11 @@ public class ScoreScript : MonoBehaviour
 
     public Slider slider;
 
+    public Text percText;
+
     void Start() {
-        slider.maxValue = 63;
-        slider.minValue = 5;
+        slider.maxValue = 58;
+        slider.minValue = 4.5f;
     }
 
 
@@ -24,5 +26,10 @@ public class ScoreScript : MonoBehaviour
         num = num / 10f;
         //scoreText.text = num.ToString("0");
         slider.value = num;
+
+        if (num >= 5) {
+            float perc = (num-5) * 100 / 58;
+            if(perc < 100) percText.text = perc.ToString("0") + "%"; 
+        }
     }
 }

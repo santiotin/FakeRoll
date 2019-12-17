@@ -31,6 +31,7 @@ public class CoinScript : MonoBehaviour
 
         if (other.gameObject.name == "Player") {
             cached = true;
+            GetComponent<Collider>().enabled = false;
         }
 
     }

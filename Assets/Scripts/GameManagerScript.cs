@@ -9,8 +9,6 @@ public class GameManagerScript : MonoBehaviour
 
     public GameObject player;
 
-    public GameObject mainMenu;
-
     public GameObject startPanel;
 
     public GameObject endPanel;
@@ -19,42 +17,34 @@ public class GameManagerScript : MonoBehaviour
 
     public GameObject deadPanel;
 
-    public GameObject startMenu;
-
-    public GameObject creditsMenu;
-
     public AudioSource backgroundAudio;
 
     public AudioSource ggAudio;
 
-    bool started = false;
-
     void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex != 0) startGame();
+        startGame();
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (Input.GetKey("1") && !started ) {
-            startGame();
+        if (Input.GetKey(KeyCode.F1)) {
+            SceneManager.LoadScene(1);
         }
-        if (Input.GetKey("2") && !started ) {
-            showCreditsMenu();
+        if (Input.GetKey(KeyCode.F2)) {
+            SceneManager.LoadScene(2);
         }
-        if (Input.GetKey("3") && !started ) {
-            QuitGame();
+        if (Input.GetKey(KeyCode.F3)) {
+            SceneManager.LoadScene(3);
         }
-        if (Input.GetKey("0") && !started ) {
-            back();
+        if (Input.GetKey(KeyCode.F4)) {
+            SceneManager.LoadScene(0);
         }
     }
 
     public void startGame() {
-        started = true;
-        mainMenu.SetActive(false);
         startPanel.SetActive(true);
         hudPanel.SetActive(true);
         player.GetComponent<PlayerMovement>().startGame();
@@ -62,6 +52,7 @@ public class GameManagerScript : MonoBehaviour
 
     public void hideStartPanel() {
         startPanel.SetActive(false);
+        player.GetComponent<PlayerMovement>().startRace();
     }
 
     public void showEndPanel() {
@@ -74,27 +65,18 @@ public class GameManagerScript : MonoBehaviour
     public void manageDeath() {
         backgroundAudio.Stop();
         deadPanel.SetActive(true);
-        StartCoroutine(changeScene(0));
+        StartCoroutine(changeSceneDead(SceneManager.GetActiveScene().buildIndex));
 
     }
 
     IEnumerator changeScene(int sceneNum) {
         yield return new WaitForSeconds(5);
+        if(sceneNum != 4) SceneManager.LoadScene(sceneNum);
+        else SceneManager.LoadScene(0);
+    }
+
+    IEnumerator changeSceneDead(int sceneNum) {
+        yield return new WaitForSeconds(3);
         SceneManager.LoadScene(sceneNum);
-    }
-
-    public void showCreditsMenu() {
-        startMenu.SetActive(false);
-        creditsMenu.SetActive(true);
-    }
-
-    public void back() {
-        startMenu.SetActive(true);
-        creditsMenu.SetActive(false);
-    }
-
-    public void QuitGame() {
-        Debug.Log("Quit!");
-        Application.Quit();
     }
 }
