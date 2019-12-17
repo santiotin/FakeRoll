@@ -27,6 +27,7 @@ public class PlayerCollision : MonoBehaviour
     public AudioSource spikeAudio;
     public AudioSource powerAudio;
     public AudioSource backgroundAudio;
+    public AudioSource fastAudio;
 
     void Start()
     {
@@ -70,6 +71,7 @@ public class PlayerCollision : MonoBehaviour
 
         if (collisionInfo.collider.name == "fast_tile")
         {
+            fastAudio.Play();
             rb.AddForce(0,0,2000);
             jumping = false;
         }

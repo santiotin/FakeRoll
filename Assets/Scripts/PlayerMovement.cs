@@ -34,23 +34,24 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetKey("m") && !mouse) mouse = true;
         if (mouse)
         {
-            if (mousePos.x > 455 && mousePos.x < 820 && mousePos.y > 0 && mousePos.y <= 420) transform.Translate(speedRight * Time.deltaTime, Space.World);//405
-            else if (mousePos.x > 0 && mousePos.x <= 355 && mousePos.y > 0 && mousePos.y <= 420) transform.Translate(speedLeft * Time.deltaTime, Space.World);
+            if(Input.mousePosition.x > (Screen.width / 2.0f) + Screen.width * 0.1) transform.Translate(speedRight * Time.deltaTime, Space.World);
+            else if(Input.mousePosition.x < (Screen.width / 2.0f) - Screen.width * 0.1) transform.Translate(speedLeft * Time.deltaTime, Space.World);
+            
         }
         else{
             if (Input.GetKey("d") && started)
             {
                 //antes la fuerza era 80 y comentando la linea de abajo
                 transform.Translate(speedRight * Time.deltaTime, Space.World);
-                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(60000, 0, 0);
-                else rb.AddForce(60, 0, 0);
+                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(55000, 0, 0);
+                else rb.AddForce(55, 0, 0);
 
             }
             if (Input.GetKey("a") && started)
             {
                 transform.Translate(speedLeft * Time.deltaTime, Space.World);
-                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(-60000, 0, 0);
-                else rb.AddForce(-60, 0, 0);
+                if(GetComponent<PlayerCollision>().isStar() || GetComponent<PlayerCollision>().isBig()) rb.AddForce(-55000, 0, 0);
+                else rb.AddForce(-55, 0, 0);
             }
         }
        
@@ -68,5 +69,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void incrementVel() {
         speed = speedForward;
+    }
+
+    public void startRace() {
+        //started = true;
     }
 }
