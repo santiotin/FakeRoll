@@ -507,7 +507,7 @@ MonoBehaviour:
   m_FontData:
     m_Font: {fileID: 12800000, guid: 07ce486b32092244b932b84c41ba3da0, type: 3}
     m_FontSize: 45
-    m_FontStyle: 0
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 100
@@ -7865,7 +7865,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eeb7ae192de1e4f4f8da21ecf15909e0, type: 2}
+  - {fileID: 2100000, guid: d48c573b9d5242340994a55eb1d14bbd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13234,7 +13234,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: eeb7ae192de1e4f4f8da21ecf15909e0, type: 2}
+  - {fileID: 2100000, guid: d48c573b9d5242340994a55eb1d14bbd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
